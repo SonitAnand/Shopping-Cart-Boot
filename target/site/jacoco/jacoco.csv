@@ -1,0 +1,17 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+shoppingCartApp,com.shopping.shoppingCartApp.constants,CommonConstant,3,0,0,0,1,0,1,0,1,0
+shoppingCartApp,com.shopping.shoppingCartApp.service,CartService,51,3,0,0,12,1,9,1,9,1
+shoppingCartApp,com.shopping.shoppingCartApp.service,UserService,0,23,0,0,0,6,0,5,0,5
+shoppingCartApp,com.shopping.shoppingCartApp.advice,CentralisedExceptionHandler,38,7,0,0,8,2,2,2,2,2
+shoppingCartApp,com.shopping.shoppingCartApp,ShoppingCartAppApplication,5,36,0,0,2,5,1,3,1,3
+shoppingCartApp,com.shopping.shoppingCartApp.models,Apparal,178,3,30,0,12,1,26,1,11,1
+shoppingCartApp,com.shopping.shoppingCartApp.models,User,354,32,61,1,22,11,48,4,17,4
+shoppingCartApp,com.shopping.shoppingCartApp.models,Cart,229,8,38,0,15,2,32,1,13,1
+shoppingCartApp,com.shopping.shoppingCartApp.models,Product,292,3,48,0,18,1,39,1,15,1
+shoppingCartApp,com.shopping.shoppingCartApp.models,Book,178,3,30,0,12,1,26,1,11,1
+shoppingCartApp,com.shopping.shoppingCartApp.controllers,UserController,6,6,0,0,2,1,1,1,1,1
+shoppingCartApp,com.shopping.shoppingCartApp.controllers,CartController,755,13,62,0,128,2,41,2,10,2
+shoppingCartApp,com.shopping.shoppingCartApp.exceptions,ResourceNotFoundException,14,3,0,0,6,1,3,1,3,1
+shoppingCartApp,com.shopping.shoppingCartApp.exceptions,ExceptionResponse,14,3,0,0,6,1,4,1,4,1
+shoppingCartApp,com.shopping.shoppingCartApp.dto,ProductDTO,87,0,0,0,37,0,25,0,25,0
+shoppingCartApp,com.shopping.shoppingCartApp.dto,DTOConverter,94,0,4,0,24,0,4,0,2,0

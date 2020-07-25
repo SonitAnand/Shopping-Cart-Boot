@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Cart.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">shoppingCartApp</a> &gt; <a href="index.source.html" class="el_package">com.shopping.shoppingCartApp.models</a> &gt; <span class="el_source">Cart.java</span></div><h1>Cart.java</h1><pre class="source lang-java linenums">package com.shopping.shoppingCartApp.models;
+
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+<span class="fc" id="L12">@NoArgsConstructor</span>
+<span class="nc" id="L13">@AllArgsConstructor</span>
+<span class="nc" id="L14">@ToString</span>
+<span class="nc bnc" id="L15" title="All 38 branches missed.">@EqualsAndHashCode</span>
+@Entity(name = &quot;cart&quot;)
+@NamedQueries(value = {
+        @NamedQuery(name = &quot;Cart.getProductDetailsByProductCode&quot;,query = &quot;SELECT prod FROM product prod JOIN cart crt on prod.cart.cartId=&quot; +
+                &quot;crt.cartId where prod.cart.cartId=?1 and prod.productCode=?2&quot;),
+        @NamedQuery(name = &quot;Cart.getProductDetailsByProductName&quot;,query = &quot;SELECT prod FROM product prod JOIN cart crt on prod.cart.cartId=&quot; +
+                &quot;crt.cartId where prod.cart.cartId=?1 and prod.productName=?2&quot;),
+        @NamedQuery(name = &quot;Cart.getBookDetailsByProductCategory&quot;,query = &quot;SELECT prod FROM book prod JOIN cart crt on prod.cart.cartId=&quot; +
+                &quot;crt.cartId where prod.cart.cartId=?1&quot;),
+        @NamedQuery(name = &quot;Cart.getApparalDetailsByProductCategory&quot;,query = &quot;SELECT prod FROM apparal prod JOIN cart crt on prod.cart.cartId=&quot; +
+                &quot;crt.cartId where prod.cart.cartId=?1&quot;),
+        @NamedQuery(name = &quot;Cart.deleteAllProductsFromCart&quot;,query = &quot;DELETE FROM product prod &quot; + &quot;WHERE prod.cart.cartId=?1&quot;),
+        @NamedQuery(name = &quot;Cart.deleteSpecificProductFromCart&quot;,query = &quot;DELETE FROM product prod &quot; + &quot;WHERE prod.cart.cartId=?1 AND prod.productCode=?2&quot;),
+        @NamedQuery(name = &quot;Cart.updateProductQuantityInCart&quot; ,query = &quot;UPDATE product prod SET prod.productQuantity=?3&quot; +
+                &quot;WHERE prod.cart.cartId=?1 AND prod.productCode=?2&quot;)
+})
+public class Cart {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long cartId;
+
+    private String cartName;
+    @Transient
+    private Double totalPrice;
+
+<span class="pc" id="L41">    @OneToMany(fetch = FetchType.EAGER,mappedBy = &quot;cart&quot;,cascade = CascadeType.ALL)</span>
+    private List&lt;Product&gt; productList = new ArrayList&lt;&gt;();
+
+    public Long getCartId() {
+<span class="nc" id="L45">        return cartId;</span>
+    }
+
+    public void setCartId(Long cartId) {
+<span class="nc" id="L49">        this.cartId = cartId;</span>
+<span class="nc" id="L50">    }</span>
+
+    public String getCartName() {
+<span class="nc" id="L53">        return cartName;</span>
+    }
+
+    public void setCartName(String cartName) {
+<span class="nc" id="L57">        this.cartName = cartName;</span>
+<span class="nc" id="L58">    }</span>
+
+    public List&lt;Product&gt; getProductList() {
+<span class="nc" id="L61">        return productList;</span>
+    }
+
+    public void setProductList(List&lt;Product&gt; productList) {
+<span class="nc" id="L65">        this.productList = productList;</span>
+<span class="nc" id="L66">    }</span>
+
+    public Double getTotalPrice() {
+<span class="nc" id="L69">        return totalPrice;</span>
+    }
+
+    public void setTotalPrice(Double totalPrice) {
+<span class="nc" id="L73">        this.totalPrice = totalPrice;</span>
+<span class="nc" id="L74">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CartService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">shoppingCartApp</a> &gt; <a href="index.source.html" class="el_package">com.shopping.shoppingCartApp.service</a> &gt; <span class="el_source">CartService.java</span></div><h1>CartService.java</h1><pre class="source lang-java linenums">package com.shopping.shoppingCartApp.service;
+
+import com.shopping.shoppingCartApp.models.Cart;
+import com.shopping.shoppingCartApp.models.Product;
+import com.shopping.shoppingCartApp.repositories.CartRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+@Transactional(propagation = Propagation.REQUIRED,readOnly = false)
+<span class="fc" id="L16">public class CartService {</span>
+
+    @Autowired
+    CartRepository cartRepository;
+
+    public Cart saveCart(Cart cart){
+<span class="nc" id="L22">        return cartRepository.save(cart);</span>
+    }
+
+    public Optional&lt;Cart&gt; getAllProductDetailsFromCart(final Long cartId) {
+<span class="nc" id="L26">        return cartRepository.findById(cartId);</span>
+    }
+
+    public void removeAllProductsFromCart(final Long cartId) {
+<span class="nc" id="L30">        cartRepository.deleteAllProductsFromCart(cartId);</span>
+<span class="nc" id="L31">    }</span>
+
+    public Product getProductDetailsByProductCode(final Long cartId, final String productCode){
+<span class="nc" id="L34">        return cartRepository.getProductDetailsByProductCode(cartId, productCode);</span>
+    }
+
+    public Product getProductDetailsByProductName(final Long cartId, final String productName) {
+<span class="nc" id="L38">        return cartRepository.getProductDetailsByProductName(cartId, productName);</span>
+    }
+
+    public void removeSpecificProductFromCart(final Long cartId, final String productCode) {
+<span class="nc" id="L42">        cartRepository.deleteSpecificProductFromCart(cartId, productCode);</span>
+<span class="nc" id="L43">    }</span>
+
+    public List&lt;Product&gt; getBookDetailsByProductCategory(final Long cartId) {
+<span class="nc" id="L46">        return cartRepository.getBookDetailsByProductCategory(cartId);</span>
+    }
+
+    public List&lt;Product&gt; getApparalDetailsByProductCategory(final Long cartId) {
+<span class="nc" id="L50">        return cartRepository.getApparalDetailsByProductCategory(cartId);</span>
+    }
+
+    public void updateProductQuantityInCart(final Long cartId, final String productCode, final Integer productQuantity) {
+<span class="nc" id="L54">        cartRepository.updateProductQuantityInCart(cartId, productCode, productQuantity);</span>
+<span class="nc" id="L55">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

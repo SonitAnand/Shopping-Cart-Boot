@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">shoppingCartApp</a> &gt; <a href="index.source.html" class="el_package">com.shopping.shoppingCartApp.service</a> &gt; <span class="el_source">UserService.java</span></div><h1>UserService.java</h1><pre class="source lang-java linenums">package com.shopping.shoppingCartApp.service;
+
+import com.shopping.shoppingCartApp.models.User;
+import com.shopping.shoppingCartApp.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+<span class="fc" id="L11">public class UserService {</span>
+
+    @Autowired
+    UserRepository userRepository;
+
+    public List&lt;User&gt; getAllUsers(){
+<span class="fc" id="L17">        return userRepository.findAll();</span>
+    }
+
+    public User getUserDetailByUserName(final String userName){
+<span class="fc" id="L21">        return userRepository.findByUserName(userName);</span>
+    }
+
+    public User saveUser(final User user){
+<span class="fc" id="L25">        return userRepository.save(user);</span>
+    }
+
+    public void deleteUser(User user){
+<span class="fc" id="L29">        userRepository.delete(user);</span>
+<span class="fc" id="L30">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CentralisedExceptionHandler.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">shoppingCartApp</a> &gt; <a href="index.source.html" class="el_package">com.shopping.shoppingCartApp.advice</a> &gt; <span class="el_source">CentralisedExceptionHandler.java</span></div><h1>CentralisedExceptionHandler.java</h1><pre class="source lang-java linenums">package com.shopping.shoppingCartApp.advice;
+
+import com.shopping.shoppingCartApp.exceptions.ExceptionResponse;
+import com.shopping.shoppingCartApp.exceptions.ResourceNotFoundException;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+@ControllerAdvice
+<span class="fc" id="L12">@Log4j2</span>
+<span class="fc" id="L13">public class CentralisedExceptionHandler {</span>
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity&lt;ExceptionResponse&gt; throwCustomExceptions(ResourceNotFoundException e) throws Exception{
+<span class="nc" id="L17">        ExceptionResponse exceptionResponse = new ExceptionResponse();</span>
+<span class="nc" id="L18">        exceptionResponse.setErrorCode(HttpStatus.BAD_REQUEST.value());</span>
+<span class="nc" id="L19">        exceptionResponse.setErrorDescription(e.getMessage());</span>
+<span class="nc" id="L20">        return new ResponseEntity&lt;ExceptionResponse&gt;(exceptionResponse,HttpStatus.BAD_REQUEST);</span>
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity&lt;ExceptionResponse&gt; generateGeneralExceptions(Exception e) throws Exception {
+<span class="nc" id="L25">        ExceptionResponse exceptionResponse = new ExceptionResponse();</span>
+<span class="nc" id="L26">        exceptionResponse.setErrorCode(HttpStatus.INTERNAL_SERVER_ERROR.value());</span>
+<span class="nc" id="L27">        exceptionResponse.setErrorDescription(e.getMessage());</span>
+<span class="nc" id="L28">        return new ResponseEntity&lt;ExceptionResponse&gt;(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

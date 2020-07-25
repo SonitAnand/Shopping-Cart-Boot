@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>User.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">shoppingCartApp</a> &gt; <a href="index.source.html" class="el_package">com.shopping.shoppingCartApp.models</a> &gt; <span class="el_source">User.java</span></div><h1>User.java</h1><pre class="source lang-java linenums">package com.shopping.shoppingCartApp.models;
+
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+import javax.persistence.*;
+
+<span class="fc" id="L10">@NoArgsConstructor</span>
+<span class="nc" id="L11">@AllArgsConstructor</span>
+<span class="nc" id="L12">@ToString</span>
+<span class="pc bpc" id="L13" title="61 of 62 branches missed.">@EqualsAndHashCode</span>
+@Entity(name = &quot;user&quot;)
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long userId;
+
+    private String userName;
+    private String userPassword;
+    private String userEmail;
+    private String userPhone;
+    private String userAddress;
+
+<span class="fc" id="L27">    public User(Long userId, String userName, String userPassword, String userEmail, String userPhone, String userAddress) {</span>
+<span class="fc" id="L28">        this.userId = userId;</span>
+<span class="fc" id="L29">        this.userName = userName;</span>
+<span class="fc" id="L30">        this.userPassword = userPassword;</span>
+<span class="fc" id="L31">        this.userEmail = userEmail;</span>
+<span class="fc" id="L32">        this.userPhone = userPhone;</span>
+<span class="fc" id="L33">        this.userAddress = userAddress;</span>
+<span class="fc" id="L34">    }</span>
+
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name = &quot;cartId&quot;,referencedColumnName = &quot;cartId&quot;,nullable = false)
+    private Cart cart;
+
+    public Long getUserId() {
+<span class="nc" id="L41">        return userId;</span>
+    }
+    public void setUserId(Long userId) {
+<span class="nc" id="L44">        this.userId = userId;</span>
+<span class="nc" id="L45">    }</span>
+    public String getUserName() {
+<span class="fc" id="L47">        return userName;</span>
+    }
+    public void setUserName(String userName) {
+<span class="nc" id="L50">        this.userName = userName;</span>
+<span class="nc" id="L51">    }</span>
+    public String getUserPassword() {
+<span class="nc" id="L53">        return userPassword;</span>
+    }
+    public void setUserPassword(String userPassword) {
+<span class="nc" id="L56">        this.userPassword = userPassword;</span>
+<span class="nc" id="L57">    }</span>
+    public Cart getCart() {
+<span class="nc" id="L59">        return cart;</span>
+    }
+    public void setCart(Cart cart) {
+<span class="nc" id="L62">        this.cart = cart;</span>
+<span class="nc" id="L63">    }</span>
+    public String getUserEmail() {
+<span class="nc" id="L65">        return userEmail;</span>
+    }
+    public void setUserEmail(String userEmail) {
+<span class="nc" id="L68">        this.userEmail = userEmail;</span>
+<span class="nc" id="L69">    }</span>
+    public String getUserPhone() {
+<span class="nc" id="L71">        return userPhone;</span>
+    }
+    public void setUserPhone(String userPhone) {
+<span class="nc" id="L74">        this.userPhone = userPhone;</span>
+<span class="nc" id="L75">    }</span>
+    public String getUserAddress() {
+<span class="nc" id="L77">        return userAddress;</span>
+    }
+
+    public void setUserAddress(String userAddress) {
+<span class="nc" id="L81">        this.userAddress = userAddress;</span>
+<span class="nc" id="L82">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
